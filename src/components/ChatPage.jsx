@@ -35,6 +35,7 @@ function ChatPage() {
             </Box>
             <Box display="flex" flexDirection="column" marginTop={3}>
                 <Box height="70vh" sx={{
+                    whiteSpace: "pre-wrap",
                     overflowY: "scroll",
                     scrollBehavior: "smooth",
                     "::-webkit-scrollbar": {
@@ -48,7 +49,7 @@ function ChatPage() {
                     <form onSubmit={handlePost}>
                         <Box display="flex" justifyContent="space-betweens" padding={1} alignItems="center">
                             <TextField sx={{
-                                width: "100%", input: { color: 'white' }
+                                width: "100%", input: { color: 'white', fontFamily: "serif", fontSize: "19px" }
                             }} id="standard-basic" variant="standard"
                                 onChange={(e) => setQuestion(e.target.value)}
                                 value={question}
