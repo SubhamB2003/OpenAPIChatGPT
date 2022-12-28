@@ -18,10 +18,10 @@ function ChatPage() {
     const handlePost = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const res = await axios.post("http://localhost:3020", {
+        const res = await axios.post("https://chatcpt.onrender.com", {
             question
         });
-        setAnswer(res.data.bot);
+        setAnswer(res.data.bot.trim());
         setLoading(false);
     }
 

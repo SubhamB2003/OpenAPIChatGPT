@@ -1,32 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar, Box, Typography } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
-import bot from "../assets/bot.svg";
+import React from 'react';
+import bot from "../assets/robo.jpg";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-
+import Typewriter from 'typewriter-effect';
 
 
 function Chat({ answer, question, i }) {
 
-    const index = useRef(0);
-    const [currentText, setCurrentText] = useState("");
+    // const index = useRef(0);
+    // const [currentText, setCurrentText] = useState("");
+    // const text = answer;
 
-    const text = answer;
+    // useEffect(() => {
+    //     index.current = -1;
+    //     // setCurrentText("");
+    // }, [text]);
 
-    useEffect(() => {
-        index.current = 0;
-        setCurrentText("");
-    }, [text]);
-
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            setCurrentText((value) => value + text.charAt(index.current));
-            index.current += 1;
-        }, 20);
-        return () => {
-            clearTimeout(timeoutId);
-        }
-    }, [currentText, text]);
-
+    // useEffect(() => {
+    //     const timeoutId = setTimeout(() => {
+    //         setCurrentText((value) => value + text.charAt(index.current));
+    //         index.current += 1;
+    //     }, 20);
+    //     return () => {
+    //         clearTimeout(timeoutId);
+    //     }
+    // }, [currentText, text]);
 
     return (
         <Box sx={{ marginBottom: "20px" }} key={i++}>
@@ -44,12 +43,19 @@ function Chat({ answer, question, i }) {
                     <Avatar sx={{ width: "24px", height: "24px" }} src={bot} alt="bot" />
                 </Box>
                 <Box sx={{ paddingBottom: "2px" }}>
-                    <Typography fontFamily={'serif'} fontSize={18} paddingLeft={2} sx={{ color: "white", paddingY: "3px", whiteSpace: "pre-wrap" }}>
-                        {answer ? currentText : "Searching..."}
-                    </Typography>
+                    <Box fontFamily={'serif'} fontSize={18} paddingLeft={2} sx={{ color: "white", paddingY: "3px", whiteSpace: "pre-wrap" }}>
+                        <Typewriter
+                            options={{
+                                strings: answer,
+                                autoStart: true,
+                                skipAddStyles: false,
+                                wrapperClassName: "typeWriterText"
+                            }}
+                        />
+                    </Box>
                 </Box>
             </Box>
-        </Box>
+        </Box >
     )
 }
 
