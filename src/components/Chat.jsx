@@ -44,7 +44,7 @@ function Chat({ answer, question, i }) {
                     <Avatar sx={{ width: "24px", height: "24px" }} src={bot} alt="bot" />
                 </Box>
                 <Box sx={{ paddingBottom: "2px" }}>
-                    <Typography fontFamily={'serif'} fontSize={18} paddingLeft={2} sx={{ color: "white", paddingY: "3px" }}>
+                    <Typography fontFamily={'serif'} fontSize={18} paddingLeft={2} sx={{ color: "white", paddingY: "3px", whiteSpace: "pre-wrap" }}>
                         {answer ? currentText : "Searching..."}
                     </Typography>
                 </Box>

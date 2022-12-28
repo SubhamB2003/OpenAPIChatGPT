@@ -18,10 +18,10 @@ function ChatPage() {
     const handlePost = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const res = await axios.post("https://chatcpt.onrender.com", {
+        const res = await axios.post("http://localhost:3020", {
             question
         });
-        setAnswer(res.data);
+        setAnswer(res.data.bot);
         setLoading(false);
     }
 
@@ -45,15 +45,19 @@ function ChatPage() {
                 </Box>
 
                 <Box sx={{ background: "#40414f", borderRadius: "6px" }}>
-                    <Box display="flex" justifyContent="space-betweens" padding={1} alignItems="center">
-                        <TextField sx={{
-                            width: "100%",
-                        }} id="standard-basic" variant="standard"
-                            onChange={(e) => setQuestion(e.target.value)}
-                            value={question}
-                        />
-                        <Send onClick={handlePost} />
-                    </Box>
+                    <form onSubmit={handlePost}>
+                        <Box display="flex" justifyContent="space-betweens" padding={1} alignItems="center">
+                            <TextField sx={{
+                                width: "100%", input: { color: 'white' }
+                            }} id="standard-basic" variant="standard"
+                                onChange={(e) => setQuestion(e.target.value)}
+                                value={question}
+                            />
+                            <button type="submit" style={{ background: "#40414f" }}>
+                                <Send sx={{ paddingTop: "2px" }} />
+                            </button>
+                        </Box>
+                    </form>
                 </Box>
             </Box>
         </Box >
