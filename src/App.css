@@ -12,3 +12,8 @@
 body {
   background: #343541;
 }
+
+.typeWriterText {
+  font-family: "Times New Roman", Times, serif;
+  font-size: "50px";
+}
